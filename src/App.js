@@ -1,26 +1,45 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { Component } from 'react';
 import './App.css';
+import Key from './Key'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+const KEYS = 'AZERTYUIOPQSDFGHJKLMWXCVBN'
+class App extends Component{
+    state = {
+        keys: this.generateKeys(),
+        usedKeys: [],
+    }
+
+    generateKeys(){
+        const result = []
+        for(var i = 0; i < KEYS.length; i++){
+            result.push(KEYS[i])
+        }
+        return result
+    }
+
+    getFeedbackForKey(letter){
+        const {usedKeys} = this.state
+        return usedKeys.includes(letter) ? 'hidden' : 'visible'
+    }
+
+    handleKeyClicked = index => {
+        const {usedKeys, keys} = this.state
+        usedKeys.push(keys[index])
+        this.setState({
+            usedKeys: usedKeys
+        })
+    }
+
+    render(){
+        const {keys} = this.state
+        return (
+            <div className='keyboard'>
+               {keys.map((letter, index) => (
+                   <Key className='key' index={index} letter={letter} feedback={this.getFeedbackForKey(letter)} onClick={this.handleKeyClicked}/>
+                ))}
+            </div>
+        )
+    }
 }
 
 export default App;

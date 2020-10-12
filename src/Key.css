@@ -1,0 +1,19 @@
+.keyboard{
+    display: flex;
+    flex-direction: row;
+}
+
+.key{
+    width: 30px;
+    height: 30px;
+    border: 1px solid black;
+    box-shadow: 3px 3px 0px 0px;
+    border-radius: 3px;
+    margin: 10px;
+    display: flex;
+    justify-content: center;
+}
+
+.key.hidden{
+    background-color: black;
+}
