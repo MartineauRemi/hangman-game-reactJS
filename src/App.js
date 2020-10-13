@@ -2,17 +2,19 @@ import React, { Component } from 'react';
 import './App.css';
 import Key from './Key'
 
-const KEYS = 'AZERTYUIOPQSDFGHJKLMWXCVBN'
+const KEYS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+const WORD = 'PINEAPPLE'
 class App extends Component{
     state = {
-        keys: this.generateKeys(),
+        word: this.getArrayFromString(WORD),
+        keys: this.getArrayFromString(KEYS),
         usedKeys: [],
     }
 
-    generateKeys(){
+    getArrayFromString(str){
         const result = []
-        for(var i = 0; i < KEYS.length; i++){
-            result.push(KEYS[i])
+        for(var i = 0; i < str.length; i++){
+            result.push(str[i])
         }
         return result
     }
@@ -20,6 +22,11 @@ class App extends Component{
     getFeedbackForKey(letter){
         const {usedKeys} = this.state
         return usedKeys.includes(letter) ? 'hidden' : 'visible'
+    }
+
+    getLetterForSecret(letter){
+        const {usedKeys} = this.state
+        return usedKeys.includes(letter)? letter : '_'
     }
 
     handleKeyClicked = index => {
@@ -31,12 +38,19 @@ class App extends Component{
     }
 
     render(){
-        const {keys} = this.state
+        const {keys, word} = this.state
         return (
-            <div className='keyboard'>
-               {keys.map((letter, index) => (
-                   <Key className='key' index={index} letter={letter} feedback={this.getFeedbackForKey(letter)} onClick={this.handleKeyClicked}/>
-                ))}
+            <div className='board'>
+                <div className='word'>
+                    {word.map((letter, index) => (
+                        <Key index={index} type='secret' letter={this.getLetterForSecret(letter)} feedback='visible' onClick={this.handleKeyClicked}/>
+                    ))}
+                </div>
+                <div className='keyboard'>
+                    {keys.map((letter, index) => (
+                        <Key index={index} type='key' letter={letter} feedback={this.getFeedbackForKey(letter)} onClick={this.handleKeyClicked}/>
+                    ))}
+                </div>
             </div>
         )
     }

@@ -1,19 +1,47 @@
-.keyboard{
+
+.board{
+    font-family: 'Calibri';
+    display: flex;
+    flex-direction: column;
+    height: 800px;
+    margin: auto;
+}
+
+.keyboard,.word{
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
+    margin: auto;
 }
 
 .key{
-    width: 30px;
-    height: 30px;
-    border: 1px solid black;
-    box-shadow: 3px 3px 0px 0px;
+    width: 40px;
+    height: 40px;
+    border: 2px solid black;
+    color: black;
     border-radius: 3px;
     margin: 10px;
     display: flex;
-    justify-content: center;
+    font-weight: bold;
+}
+
+.secret{
+    width: 80px;
+    height: 80px;
+    margin: 10px;
+}
+
+.secret .letter{
+    font-size: 3em;
 }
 
 .key.hidden{
-    background-color: black;
+    background-color:black;
+}
+
+.letter{
+    text-align: bottom;
+    margin: auto;
+    font-size: 2em;
+    font-weight: bold;
 }
