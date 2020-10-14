@@ -1,0 +1,26 @@
+.endOfGame{
+    display: flex;
+    flex-direction: column;
+    font-family: 'Calibri';
+}
+
+.msgEndOfGame, .btnEndOfGame{
+    margin: auto;
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+.msgEndOfGame{
+    font-size: 3em;
+}
+
+.btnEndOfGame{
+    width: 200px;
+    height: 60px;
+    font-size: 1.5em;
+    border-radius: 10px;
+    color: white;
+    background-color: #01D758;
+    border: #01D758;
+    cursor: pointer;
+}

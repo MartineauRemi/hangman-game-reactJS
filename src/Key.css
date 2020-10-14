@@ -1,19 +1,3 @@
-
-.board{
-    font-family: 'Calibri';
-    display: flex;
-    flex-direction: column;
-    height: 800px;
-    margin: auto;
-}
-
-.keyboard,.word{
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    margin: auto;
-}
-
 .key{
     width: 40px;
     height: 40px;
@@ -23,16 +7,7 @@
     margin: 10px;
     display: flex;
     font-weight: bold;
-}
-
-.secret{
-    width: 80px;
-    height: 80px;
-    margin: 10px;
-}
-
-.secret .letter{
-    font-size: 3em;
+    cursor: pointer;
 }
 
 .key.hidden{
